@@ -1,4 +1,6 @@
-import os, sys
+import os
+import sys
+
 
 def get_config():
     from setup_common import get_metadata_and_options, enabled, create_release_file
@@ -18,12 +20,12 @@ def get_config():
     libraries = [ 'kernel32', 'advapi32', 'wsock32', client ]
     include_dirs = [ os.path.join(connector, r'include') ]
     extra_compile_args = [ '/Zl' ]
-    
+
     name = "MySQL-python"
     if enabled(options, 'embedded'):
         name = name + "-embedded"
     metadata['name'] = name
-    
+
     define_macros = [
         ('version_info', metadata['version_info']),
         ('__version__', metadata['version']),
@@ -43,4 +45,3 @@ def get_config():
 
 if __name__ == "__main__":
     sys.stderr.write("""You shouldn't be running this directly; it is used by setup.py.""")
-    

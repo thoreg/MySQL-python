@@ -1,5 +1,6 @@
-import os, sys
-from ConfigParser import SafeConfigParser
+import os
+import sys
+
 
 # This dequote() business is required for some older versions
 # of mysql_config
@@ -9,8 +10,10 @@ def dequote(s):
         s = s[1:-1]
     return s
 
+
 def compiler_flag(f):
     return "-%s" % f
+
 
 def mysql_config(what):
     from os import popen
@@ -25,6 +28,7 @@ def mysql_config(what):
             raise EnvironmentError("%s not found" % (mysql_config.path,))
     return data
 mysql_config.path = "mysql_config"
+
 
 def get_config():
     from setup_common import get_metadata_and_options, enabled, create_release_file
@@ -100,4 +104,3 @@ def get_config():
 
 if __name__ == "__main__":
     sys.stderr.write("""You shouldn't be running this directly; it is used by setup.py.""")
-

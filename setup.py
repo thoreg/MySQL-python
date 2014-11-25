@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
+import distutils.errors
 import os
 import sys
 
-import distutils.errors
 import setuptools
 
 if not hasattr(sys, "hexversion") or sys.hexversion < 0x02040000:
